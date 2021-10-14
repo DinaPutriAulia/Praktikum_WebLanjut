@@ -1,8 +1,7 @@
 <?= $this->extend('template'); ?>
+
 <?= $this->section('content'); ?>
-
 <body class="hold-transition sidebar-mini layout-fixed">
-
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -168,18 +167,6 @@
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -193,14 +180,16 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <li class="nav-item menu">
+</li>
+          <li class="nav-item">
             <a href="/admin/posts" class="nav-link">
-              <i class="nav-icon fas "></i>
+              <i class="nav-icon fas fa-book-open"></i>
               <p>
-                My Post
-                <i class="right fas fa-angle-left"></i>
+                My Posts
               </p>
             </a>
+</li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -215,7 +204,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">My Posts</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -226,14 +215,49 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-    <!-- /.content-header -->
 
-          <!-- right col -->
+    <!-- /.content-header -->
+    <!-- Main Content-->
+    <div class="container">
+    <div class="card">
+  <div class="card-header">
+    Form Tambah Posts
+  </div>
+  <div class="card-body">
+  <form>
+      <div class="row">
+  <div class="col-md-4">
+      <div class ="form-grup">
+          <label for="judul" >Judul Postingan</label>
+          <input type="text" class="form-control" id="judul" name="judul">
         </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+        <div class ="form-grup">
+            <label for="slug" >Slug</label>
+            <input type="text" class="form-control" id="slug" name="slug">
+        </div>
+        <div class ="form-grup">
+            <label for="kategori" >Kategori Postingan</label>
+            <input type="text" class="form-control" id="kategori" name="kategori">
+        </div>
+        <div class ="form-grup">
+            <label for="author" >Author</label>
+            <input type="text" class="form-control" id="author" name="author">
+        </div><br>
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>Submit</button>
+        </div>
+        <div class ="col-md-8">
+            <label for="deskripsi">Deskripsi Postingan</label><br>
+            <textarea name="deskripsi" id="deskripsi"></textarea>
+        </div>
+    </div>
+  </form>
+    
+</div>
+    </div> 
+</div>
+    <!-- bakal diubah-->
+
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -252,4 +276,11 @@
 </div>
 <!-- ./wrapper -->
 
+
 <?= $this->endSection(); ?>
+
+<?=$this->section('myscript'); ?>
+<script>
+    $('#deskripsi').summernote()
+</script>
+<?=$this->endSection(); ?>
