@@ -86,4 +86,31 @@ class AdminPostController extends BaseController
 		return redirect()->to(base_url('admin/posts/create'))->withInput()->with('validation',$this->validator);
 	}
 }
+
+	public function delete($post_id){
+
+		$PostModel = model("PostModel");
+		$PostModel->delete($post_id);
+		return redirect()-> to (base_url('admin/posts'));
+	}
+
+	public function edit($slug)
+	{
+		session();
+		$PostModel = model("PostModel");
+        $data = [
+            'validation' => \Config\Services::validation(),
+			'post' => $PostModel->where(['slug' => $slug])->first()
+        ];
+        return view ('posts/edit', $data);
+	}
+
+
+	public function update($slug)
+	{
+		$PostModel = model("PostModel");
+		$data = $this->request->getPost();
+		$PostModel->update($slug, $data);
+		return redirect()->to(base_url('/admin/posts/'));
+	}
 }
